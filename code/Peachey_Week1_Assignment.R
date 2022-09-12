@@ -28,15 +28,15 @@ df
 df.b <- df[,-1]
 df.b
 # Add 1 row with unique numeric values to the data frame.
-f <- c(11,12,13,14,15,16,17,18,19,20,21,22,23,24,25)
+f <- c(11,12,13,14,15,16,17,18,19,20,21,22,23,24,25) #This is a column instead of a row.
 
-new.df <- cbind(df, f)
+new.df <- cbind(df, f) #You should have used "df.b" here - this contains the column you removed in line 28.
 new.df
 # Export the data frame as a .csv file 
 setwd("/users/shmabe/GitHub/Gabe-Repository")
 write.csv(new.df,file="week1df.csv")
 # Generate summary statistics of your data frame and copy them as text into your script under a new section heading.
-summary(new.df)
+summary(new.df) #Forgot to copy them into your script. Most of the numeric columns are also displaying as character here.
 # Upload your script and your .csv file to Blackboard.
 
 
