@@ -50,3 +50,5 @@ library(simboot)
 
 
 
+#where are the functions and manipulated examples? You've chosen packages here that will work and you created figures (which do not have a file type), but I can't find any of the code to go with it beyond the packages here.
+
