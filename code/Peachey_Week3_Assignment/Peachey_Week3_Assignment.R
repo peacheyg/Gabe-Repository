@@ -31,14 +31,31 @@ runGitHub(username="cjbattey",repo="driftR")
 ## 2) Using Google and ONLY packages from GitHub or CRAN:
     # Find a package that will generate standard diversity metrics for community ecology, specifically Simpson's Diversity Index.
     # Copy-paste into your script - and run - an example from the reference manual for a function to calculate Simpson's diversity. 
-install.packages("devtools")
-library(devtools)
-install.packages("devtools")
-devtools::install_github("shearer/simboot")
-
-data(Bacteria)
-library(simboot)
-
+install.packages("vegan")
+library("vegan")
+data("BCI")
+simpson.unb(BCI, inverse = FALSE)
+print(1         2         3         4         5         6         7         8         9        10        11        12 
+     0.9768097 0.9705705 0.9666957 0.9735281 0.9697470 0.9650982 0.9695320 0.9694491 0.9557625 0.9683857 0.9682544 0.9576765 
+     13        14        15        16        17        18        19        20        21        22        23        24 
+     0.9715830 0.9740865 0.9730118 0.9708815 0.9570245 0.9704653 0.9678171 0.9771366 0.9709857 0.9571214 0.9752212 0.9719062 
+     25        26        27        28        29        30        31        32        33        34        35        36 
+     0.9748207 0.9733482 0.9693207 0.9523905 0.9507160 0.9622918 0.9658749 0.9586152 0.9608984 0.9629418 0.7997282 0.9671058 
+     37        38        39        40        41        42        43        44        45        46        47        48 
+     0.9587054 0.9386142 0.9382332 0.9155855 0.9755710 0.9755413 0.9593203 0.9602210 0.9550363 0.9669215 0.9694895 0.9699785 
+     49        50 
+     0.9632110 0.9702243)
+diversity(BCI, "invsimpson")
+print(1         2         3         4         5         6         7         8         9        10        11        12 
+      39.415554 31.584877 28.254778 35.225771 31.081658 26.849731 30.489077 30.487609 21.471056 29.744868 29.273803 22.251827 
+      13        14        15        16        17        18        19        20        21        22        23        24 
+      32.475442 35.539830 34.371014 31.907937 21.984098 30.929617 29.054548 39.775448 31.853042 22.139382 36.170213 32.708387 
+      25        26        27        28        29        30        31        32        33        34        35        36 
+      36.516636 34.431303 30.299530 19.971863 19.269343 25.167317 27.457940 23.002620 24.209883 25.502106  4.960258 28.454909 
+      37        38        39        40        41        42        43        44        45        46        47        48 
+      22.989309 15.751596 15.629977 11.589250 37.235945 37.292428 23.235938 23.737903 21.224806 28.306797 30.495526 30.903463 
+      49        50 
+      25.611603 31.228916 )
  # Depending on the example usage of the function, either upload a plot of the result or use print() and copy/paste the console output into your script.
     # After running the function example, modify your script to generate another diversity metric that is NOT part of the example. 
         # If there are two diversity metrics in the example script, neither of these will count as the modified script.
@@ -49,6 +66,4 @@ library(simboot)
           # Their calculation can be very tedious by hand - and very fast with a package designed for the operation.
 
 
-
-#where are the functions and manipulated examples? You've chosen packages here that will work and you created figures (which do not have a file type), but I can't find any of the code to go with it beyond the packages here.
 
