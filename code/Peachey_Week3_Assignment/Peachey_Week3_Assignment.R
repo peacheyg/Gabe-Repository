@@ -15,6 +15,7 @@ if(length(dl_pkgs)!=0){
 }
 library(shiny)
 runGitHub(username="cjbattey",repo="driftR")
+#Very cool! I might steal this package for next time...the exports are somehow corrupt though, I suspect it has to do with the shiny package.
  # Copy-paste into your script - and run - an example from the reference manual for a function within this package related to a measure of genetic drift. 
         # Depending on the function, either upload a plot of the result or use print() and copy/paste the console output into your script.
     
