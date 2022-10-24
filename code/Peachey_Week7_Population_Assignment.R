@@ -20,6 +20,7 @@ ggplot(df_w7)  +
   theme_bw() 
 
 # Export this plot to have on hand for reference in the next section of the assignment (and upload with your script).
+#Where is the plot? There is a file saved as Wk7 plot, but there's no file extension so it is unopenable. 
 
 # (1) - Which species is most likely to be r-selected prey and which its primary predator? (2 pts)
 # What is one relationship the third species MIGHT have to the first two? (2 pts)
