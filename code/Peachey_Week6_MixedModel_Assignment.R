@@ -9,6 +9,8 @@ library(mgcv)
 # First create models with the same (y) and method (GLMM) as the published paper, using the GLMM function from the tutorial. 
   #Create two different models using the same 3 predictor (x) variables from the dataset. (4 points each) 
     # In one model only include additive effects.
+
+#Run out of order - line 23 needs to be up here.
 glmm.mod1 <- glmmPQL(prop.cons~temperature+carapace.width+claw.width, family = binomial, random = ~ 1 | block, data = df)
 summary(glmm.mod1)
     # In the other model include one interactive effect.
@@ -21,14 +23,16 @@ summary(glmm.mod2)
 df$prop.cons <- df$eaten/df$prey 
 
 # (Q1) - The code in line 8 is performing two operations at once. What are they? (2 pts)
-?
+#?
 
 # (Q2) - Did the interactive effect change which variables predict proportional consumption? How, specifically, did the results change? (5 pts)
 #The interactive effect did affect which variables predict proportional consumption because it produced lower p values.
-
+#What about r-squared, specific variables, etc? This is a very tiny part of the difference and not specific.
+  
 # (Q3) - Plot the residuals of both models. Do you think either model is a good fit? Why or why not? (3 pts)
 plot(glmm.mod1$residuals, ylim = c(-4,4))
 plot(glmm.mod2$residuals, ylim = c(-.1,.1))
+#Why the limits? What about the actual questions?
 
 # Re-run both models as generalized additive models instead (using gam). Then compare the AIC of both models. (4 points each)
 gam.mod1 <- gam(activity.level~temperature+carapace.width+claw.width, family = binomial, random = list(ID=~ 1), data = df)
@@ -46,7 +50,7 @@ The general additive model with the interactive effect is a better fit because i
 plot(gam.mod1$residuals, ylim = c(-4,4))
 plot(gam.mod2$residuals, ylim = c(-4,4))
 A little confident because the model with the interactive effect produced residual with a more defined trend.
-
+#No, and it didn't! You don't want a trend in the residuals...neither model shows any pattern which is good.
 
 
 
