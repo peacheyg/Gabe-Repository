@@ -1,4 +1,4 @@
-setwd("/users/shmabe/GitHub/Gabe-Repository/R Final Project")
+setwd("C:/GitHub/Gabe-Repository/R Final Project")
 USGS.csv <- read.csv("USGS Chesapeake Data.csv", header=T)
 Big.Benthic.data <- read.csv("LivingResourcesIBIStation (1).csv", header=T)
 
@@ -65,15 +65,15 @@ head(FP.SDSS)
 PC.SDSS <- cor.test(FP.SDSS$SimpsonDiversity, FP.SDSS$SedimentLoad, 
                      method = "pearson")
 PC.SDSS
-
+#This didn't work for me.
 #Merging Simpson's Diversity, Total Abundance, and Suspended Sediment
 FP.SDTA <- merge(FP.SD, FP.TA, by="Year")
 FP.SDTASS <- merge(FP.SDTA, USGS.FINAL.2, by="Year")
 head(FP.SDTASS)
 #Multivariate Regression of Simpson's Diversity and Abundance with Sediment Load
-lm.SDTASS = lm(SimpsonDiversity + TotalAbundance ~ SedimentLoad, data = FP.SDTASS)
-summary(lm.SD)
-
+lm.SDTASS = lm(SimpsonDiversity + TotalAbundance ~ x, data = FP.SDTASS)
+summary(lm.SDTASS)#Name was wrong
+#Sediment load column needed to be renamed first - currently "x"
 #Merging benthic animal classes and Suspended Sediment
 FP.BC <- merge(FP.B, FP.C, by="Year")
 FP.BCS <- merge(FP.BC, FP.S, by="Year")
@@ -82,12 +82,14 @@ head(FP.BCSSS)
 
 #ANOVA of benthic animal classes
 
-MANOVA.BCSSS <- manova(cbind(PCTBurrower, PCTClinger, PCTSwimmer) ~ SedimentLoad, data = FP.BCSSS)
+MANOVA.BCSSS <- manova(cbind(PCTBurrower, PCTClinger, PCTSwimmer) ~ x, data = FP.BCSSS)
 summary(MANOVA.BCSSS)
 
 #Plotting sediment load over time in a line graph
 USGS.FINAL.2$Year <- as.numeric(as.character(USGS.FINAL.2$Year))
-lg.SS <- ggplot(aes(x = Year, y = SedimentLoad), data = USGS.FINAL.2, group=1) + geom_line(color="turquoise4") + theme_minimal() + 
+#Forgot ggplot library
+library(ggplot2)
+lg.SS <- ggplot(aes(x = Year, y = x), data = USGS.FINAL.2, group=1) + geom_line(color="turquoise4") + theme_minimal() + 
   labs(x="Year", y="Sediment Load (lbs/year)")
 lg.SS
 #Plotting benthic organism classes by year as boxplot
@@ -96,5 +98,5 @@ boxplot(IBIValue~IBIParameter,data=Benthic.graph.df,
         xlab="Benthic Class", ylab="Percent of Total Animals Surveyed", col=("turquoise4"))
 
 #Plotting simpson's diversity as a function of sediment load in a scatter plot
-plot(FP.SDSS$SedimentLoad, FP.SDSS$SimpsonDiversity,
-     xlab="Sediment Load (lbs/year)", ylab="Simpson's Diversity", pch=19)+abline(lm(FP.SDSS$SimpsonDiversity~FP.SDSS$SedimentLoad), col="red")
+plot(FP.SDSS$x, FP.SDSS$SimpsonDiversity,
+     xlab="Sediment Load (lbs/year)", ylab="Simpson's Diversity", pch=19)+abline(lm(FP.SDSS$SimpsonDiversity~FP.SDSS$x), col="red")
